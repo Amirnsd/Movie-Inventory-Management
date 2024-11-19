@@ -26,9 +26,6 @@ A simple and effective Movie Inventory Management system designed to help users 
 
 ---
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Amirnsd/Movie-Inventory-Management.git
-   cd Movie-Inventory-Management
+## Movie Inventory Management System Demo
+Check out the demo of the Movie Inventory Management System:  
+[Watch the demo on YouTube](https://youtu.be/S8NHaPXd3F4)
