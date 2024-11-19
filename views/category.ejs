@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/category.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>MovieHub - Categories</title>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1 class="hero-title">Movie Categories</h1>
+            <p class="hero-subtitle">Browse movies by genre</p>
+        </header>
+
+        <div class="action-bar">
+            <a href="/" class="back-button">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+
+        <div class="genres-container">
+            <% 
+                let genres = {};
+                movies.forEach(function(movie) {
+                    if (!genres[movie.genre]) {
+                        genres[movie.genre] = [];
+                    }
+                    genres[movie.genre].push(movie);
+                });
+            %>
+
+            <% for (let genre in genres) { %>
+                <div class="genre-section">
+                    <h2 class="genre-title">
+                        <i class="fas fa-film"></i> <%= genre %>
+                    </h2>
+                    <div class="movies-grid">
+                        <% genres[genre].forEach(function(movie) { %>
+                            <div class="movie-card">
+                                <div class="movie-icon">
+                                    <i class="fas fa-film"></i>
+                                </div>
+                                <div class="movie-details">
+                                    <h3 class="movie-title"><%= movie.name %></h3>
+                                    <p class="movie-year"><i class="fas fa-calendar"></i> <%= movie.year %></p>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

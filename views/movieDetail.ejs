@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/movieDetail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>MovieHub - Movie List</title>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1 class="hero-title">Movie Collection</h1>
+            <p class="hero-subtitle">Manage your movie library</p>
+        </header>
+
+        <div class="action-bar">
+            <a href="/moviedetail/add" class="add-button">
+                <i class="fas fa-plus"></i> Add New Movie
+            </a>
+            <a href="/" class="back-button">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+
+        <div class="movie-grid">
+            <% movies.forEach(movie => { %>
+                <div class="movie-card">
+                    <div class="movie-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="movie-details">
+                        <h3 class="movie-title"><%= movie.name %></h3>
+                        <div class="movie-info">
+                            <span><i class="fas fa-calendar"></i> <%= movie.year %></span>
+                            <span><i class="fas fa-globe"></i> <%= movie.country %></span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/moviedetail/edit/<%= movie.id %>" class="edit-btn">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <button onclick="deleteMovie('<%= movie.id %>')" class="delete-btn">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <script>
+        async function deleteMovie(id) {
+            if (confirm('Are you sure you want to delete this movie?')) {
+                try {
+                    const response = await fetch(`/moviedetail/${id}`, {
+                        method: 'DELETE',
+                    });
+                    
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert('Failed to delete the movie');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error deleting the movie');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

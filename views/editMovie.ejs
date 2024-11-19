@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/editMovie.css">
+    <title>Edit Movie - MovieHub</title>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1 class="hero-title">Edit Movie Details</h1>
+        </header>
+        
+        <div class="movie-form">
+            <form action="/moviedetail/<%= movie.id %>" method="POST">
+                <div class="form-group">
+                    <label for="name">Movie Name</label>
+                    <input type="text" id="name" name="name" value="<%= movie.name %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="number" id="year" name="year" value="<%= movie.year %>" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" name="country" value="<%= movie.country %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input type="text" id="genre" name="genre" value="<%= movie.genre %>" required>
+                </div>
+                
+                
+                <button type="submit">
+                    <i class="fas fa-save"></i> Update Movie
+                </button>
+            </form>
+            
+            <a href="/moviedetail" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Movie List
+            </a>
+        </div>
+    </div>
+</body>
+</html>

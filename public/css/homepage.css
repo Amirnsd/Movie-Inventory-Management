@@ -1,0 +1,203 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #a8b2d1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Navigation Cards */
+.navigation {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.nav-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-card a {
+    display: block;
+    padding: 30px;
+    text-decoration: none;
+    color: #fff;
+    height: 100%;
+}
+
+.nav-card i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #64ffda;
+}
+
+.nav-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.nav-card p {
+    color: #a8b2d1;
+    margin-bottom: 20px;
+}
+
+.action-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #64ffda;
+    font-weight: 500;
+}
+
+.action-text i {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #a8b2d1;
+    margin-top: auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects */
+.nav-card:hover .action-text i {
+    animation: bounceArrow 0.5s ease infinite;
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .navigation {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .nav-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .hero {
+        padding: 40px 10px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .nav-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .nav-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .nav-card {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Glass Morphism Effect */
+.nav-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Loading State Animation */
+.navigation {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .nav-card, .hero, .navigation {
+        animation: none;
+        transition: none;
+    }
+}
